@@ -1,0 +1,194 @@
+@use './../../../Scss/'as *;
+.list-all{
+    width: 82%;
+    background-color: $bg-color;
+    @include mobile{
+        width: 100%;
+    }
+    &__container{
+        
+        @include flex(unset,unset);
+        @include mobile{
+            padding: 0;
+        }
+        &__left{
+            width: 80%;
+            
+            @include mobile{
+                width: 100%;
+            }
+            &__list{
+                @include flex-vertical;
+                &__button{
+                   margin: 30px 0;
+                    width: 100%;
+                    @include flex(center,center);
+                    .button-group{
+                        @include flex(unset,unset);
+                        button{
+                            cursor: pointer;
+                            margin: 0 10px;
+                            background-color: $button-color;
+                            width: 40px;
+                            height: 40px;
+                            color: $txt-color-2;
+                            outline: none;
+                            border: none;
+                            border-radius: 5px;
+                            &:first-child:hover{
+                                background-color: rgb(170, 14, 14);
+                                transition:  all 0.4s ease;
+                            }
+                            &:last-child:hover{
+                                background-color: rgb(170, 14, 14);
+                                transition:  all 0.4s ease;
+                            }
+                        }
+                    }
+                    
+                 }
+                 &__video{
+                    
+                     padding: 0 50px;
+                     @include flex(space-between,unset);
+                     flex-wrap: wrap;
+                     a{
+                         @include mobile{
+                             width: 48%;
+                         }
+                         @include tablet{
+                             width: 32%;
+                         }
+                         @include laptop{
+                             width: 32%;
+                         }
+                         width: 22%;
+                         height: 100%;
+                        .video-item{
+                            cursor: pointer;
+                            position: relative;
+                            background-size: cover;
+                            background-repeat: no-repeat;
+                            background-position: center;
+                             width: 100%;
+                             height: 280px;
+                             border-radius: 20px;
+                             margin: 10px 0;
+                                &:hover{
+                                        &:after{
+                                            opacity: 0.7;
+                                        transition: all 0.4s ease-in;
+                                        }
+                                        p{
+                                            transform: translateY(150px);
+                                            transition: all 0.4s ease-in;
+                                        }
+                                        .button{
+                                            i{
+                                                opacity: 1;
+                                                transition: all 0.4s ease;
+                                                transition-delay: 0.4s;
+                                            }
+                                        }
+                                        
+                                    }
+                                &__container{
+                                    width: 100%;
+                                    height: 100%;
+                                    &__content{
+                                        width: 100%;
+                                        @include flex(center,center);
+                                        .name{
+                                            text-align: center;
+                                            width: 80%;
+                                            color: $txt-color-2;
+                                            p{
+                                                position: relative;
+                                                z-index: 3;
+                                                font-size: 20px;
+                                            }
+                                        }
+                                        .button{
+                                            &:hover{
+                                                i{
+                                                   
+                                                    color: $button-color;
+                                                    transition: all 0.4s ease-in;
+                                                    transform: rotate(360deg);
+                                                }
+                                            }
+                                            i{
+                                                opacity: 0;
+                                             
+                                                font-size: 70px;
+                                                color: $txt-color-2;
+                                              
+                                            }
+                                            position: absolute;
+                                            z-index: 5;
+                                            top: 0%;
+                                            right: 50%;
+                                            transform: translate(50%,100%);
+                                            
+                                        }
+                                    }
+                                }
+                             &:after{
+                                 content: '';
+                                 position: absolute;
+                                 z-index: 2;
+                                 width: 100%;
+                                 height: 100%;
+                                 border-radius: 20px;
+                                 top: 0;
+                                 right: 0;
+                                 background-color: black;
+                                 opacity: 0.3;
+                             }
+                         }
+                     }
+                 }
+            }
+        }
+        &__right{
+            @include mobile{
+                display: none;
+            }
+            border-left: 2px solid #24252a;
+            width: 20%;
+            padding:  0 20px;
+            background-color: $bg-color;
+            margin-top: 60px;
+            float: left;
+            &__search{
+                @include flex-vertical;
+                position: relative;
+                i{
+                    z-index: 2;
+                    color: $txt-color;
+                    position: absolute;
+                    top:34%;
+                    left: 10%;
+                    @include laptop{
+                        font-size: 14px;
+                    }
+                }
+                input{
+                    position: relative;
+                    border: 1px solid $txt-color;
+                    border-radius: 40px;
+                    padding: 15px 20px 15px 40px;
+                    background-color: $bg-color;
+                    color: $txt-color-2;
+                    
+                }
+                ::placeholder {
+                    font-size: 16px;
+                    @include laptop{
+                        font-size: 14px;
+                    }
+                  }
+            }
+        }
+    }
+}

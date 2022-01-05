@@ -1,0 +1,15 @@
+@use  './Components/Scss/' as *;
+body{
+    a{
+        text-decoration: none;
+    }
+    .main-project{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        .container{
+            display: flex;
+            width: 100%;
+        }
+    }
+}

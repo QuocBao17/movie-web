@@ -1,0 +1,56 @@
+@use './../Scss/' as *;
+.video{
+    width: 100%;
+    position: absolute;
+    z-index: 10;
+    top: 3%;
+    @include flex(center,center);
+    &__container{
+        position: relative;
+        // display: none;
+        width: 70%;
+        &__box{
+            .text{
+                height: 100%;
+                position: absolute;
+                width: 100%;
+                background-color: rgb(30, 32, 32);
+                img{
+                    position: absolute;
+                    top: 50%;
+                    font-size: 40px;
+                    right: 50%;
+                    transform: translate(50%,-50%);
+                  
+                  
+                }
+            }
+            @include mobile{
+                iframe{
+                    height: 300px;
+                }
+            }
+            .button__closebox{
+            position: absolute;
+              top: -40px;
+              right: -25px; 
+               p{
+                   cursor: pointer;
+                   @include flex(center,center);
+                   width: 20px;
+                   height: 20px;
+                   font-size: 20px;
+                   border: 1px solid $txt-color;
+               }
+            }
+        }
+    }
+}
+.nonactive-trailer{
+    transform: scale(0);
+    transition: all 0.5s ease;
+}
+.active-trailer{
+    transform: scale(1);
+    transition: all 0.5s ease;
+}

@@ -1,0 +1,145 @@
+@use './../Scss/' as *;
+.movies{
+    &__container{
+        &__left{
+            &__responsive__logo{
+                margin: 30px 0 0 0;
+                @include flex(center,center);
+               &__content{
+                display: none;
+                @include mobile{
+                    width:25%; 
+                    display: block;
+                    img{
+                        width: 100%;
+                    }
+                }
+             
+               }
+            }
+            &__nav{ 
+                position: relative;
+                &__menu, &__search{
+                    i{
+                        color: $txt-color;
+                    }
+                    display: none;
+                    @include mobile{
+                        display: block;
+                    }
+            
+                }
+                &__search{
+                    position: absolute;
+                    right: 3%;
+                    i{
+                        cursor: pointer;
+                        @include flex(center,center);
+                        position: absolute;
+                        color: $txt-color-2;
+                        width: 40px;
+                        height: 40px;
+                        background-color: $button-color;
+                        border-radius: 40px;
+                        right: 4px;
+                        top: 4px;
+                    }
+                    input{
+                        width: 100px;
+                        padding: 15px 40px 15px 20px;          
+                        background-color: $bg-color;
+                        border-radius: 40px;
+                        border:  1px solid $txt-color;
+                        color: $txt-color-2;
+                        
+                        &::placeholder{
+                            padding-left: 5px;
+                        }
+                    }
+                }
+                &__menu{ 
+                    i{
+                        margin-top: 10px;
+                        font-size: 25px;
+                        margin-right: 10px;
+                        &:hover{
+                            color: $txt-color-2;
+                            transition: all 0.3s ease;
+                        }
+                    }
+                }
+                @include flex(unset,unset);
+                margin-top: 60px;
+                @include mobile{
+                    width: 90%;
+                    margin-top: 20px;
+                    margin-left: 40px;
+                    margin-bottom: 10px;
+                    @include flex(unset,unset);
+                }
+                @include laptop{ 
+                    @include flex(unset,unset);  
+                    width: 40%;
+                }
+                ul{
+                    
+                    @include mobile{
+                        padding: 0;
+                    }
+                    @include laptop{
+                        padding: 0 20px;
+                    }
+                    a{
+                        text-decoration: none;
+                        li{          
+                            @include mobile{
+                                margin: 0 5px;
+                            } 
+                            @include laptop{
+                                margin: 0 10px;
+                            }     
+                            margin: 0 10px;    
+                            text-decoration: none;
+                            font-weight: 400;
+                            color: $txt-color-3;
+                            font-size: 18px;
+                            cursor: pointer;
+                            &:hover{
+                              color: $txt-color-2;
+                              transition: color 0.4s ease
+                             } 
+                            &.active{
+                            color: $txt-color-2;
+                            }   
+                            @include mobile{
+                                font-size: 16px;
+                            }     
+                            @include laptop{
+                                font-size: 16px;
+                            }      
+                        }
+                    }
+                    @include flex(space-between, center);
+                }
+            }
+        }
+    }
+}
+.noactive-search{
+    .popup{
+        transform: scaleY(0);
+        transition: all 0.4s ease;
+        visibility: hidden;
+        opacity: 0;
+        transform-origin: top;
+    }
+  }
+  .active-search{
+      .popup{
+        transform: scaleY(1);
+        transition: all 0.4s ease;
+        visibility: visible;
+        opacity: 1;
+        transform-origin: top;
+      }
+  }

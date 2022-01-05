@@ -1,0 +1,19 @@
+@use './../Scss/'as *;
+.teaser{
+    &__container{
+        &__wrap{
+            &__item{
+                .item-video{
+                    &__box{
+                        @include mobile{
+                            iframe{
+                                height: 300px;
+                            }
+                        }
+                        padding: 30px;
+                    }
+                }
+            }
+        }
+    }
+}
