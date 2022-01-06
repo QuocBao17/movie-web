@@ -1,7 +1,7 @@
 import logo from "../../Image/logo.png";
 import { Link, useLocation } from "react-router-dom";
 import "./navigation.scss";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 const Navigation = (props) => {
   var Menu = [
     {
@@ -56,34 +56,26 @@ const Navigation = (props) => {
   ];
   var currentPath = useLocation().pathname; // lấy path hiện tại
   var arrayPath = currentPath.split("/");
-  console.log(arrayPath);
-
-  // var a = "https://test1-movie.surge.sh/home/tv";
-  // var b = a.split("/");
-  // console.log(b);
-  // if (b.includes("home")) {
-  //   console.log("y");
-  // }
   if (arrayPath.includes("home")) {
     var pathActive = "/home/movie";
+  } else {
+    var pathActive = currentPath;
   }
-  console.log(pathActive);
-  // var shift = arrayPath.shift();
-  // var pathActive = "/" + arrayPath[0]; // nhận dc path[0];
-  // if (pathActive == "/home") {
-  //   pathActive = "/home/movie";
-  // }
   const onClose = () => {
     var status = false;
     props.reciveStatus(status);
   };
-  document.onclick = (e) => {
-    var menuElement = document.getElementById("menu");
-    var open = document.getElementById("iconOpen");
-    if (menuElement.contains(e.target) == false && e.target != open) {
+  const myRef = useRef();
+  const check = (e) => {
+    if (!myRef.current.contains(e.target)) {
       onClose();
     }
   };
+  useEffect(() => {
+    document.addEventListener("mousedown", check);
+    return () => document.removeEventListener("mousedown", check);
+  });
+
   return (
     <div className="navigation">
       <div className="navigation__container">
@@ -98,7 +90,7 @@ const Navigation = (props) => {
                 key={index}
                 className={`${item.path === pathActive ? "active" : ""}`}
               >
-                <Link to={item.path}>
+                <Link to={pathActive}>
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -116,7 +108,7 @@ const Navigation = (props) => {
                   item.path === currentPath.pathname ? "active" : ""
                 }`}
               >
-                <Link to={item.path}>
+                <Link to={pathActive}>
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -134,7 +126,7 @@ const Navigation = (props) => {
                   item.path === currentPath.pathname ? "active" : ""
                 }`}
               >
-                <Link to={item.path}>
+                <Link to={pathActive}>
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -145,6 +137,7 @@ const Navigation = (props) => {
       </div>
       <div
         id="menu"
+        ref={myRef}
         className={`navigation__mobile__container ${
           props.status ? "active-menu" : "unactive-menu"
         }`}
@@ -179,7 +172,7 @@ const Navigation = (props) => {
                     item.path === currentPath.pathname ? "active" : ""
                   }`}
                 >
-                  <Link to={item.path}>
+                  <Link to={pathActive}>
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
                   </Link>
@@ -197,7 +190,7 @@ const Navigation = (props) => {
                     item.path === currentPath.pathname ? "active" : ""
                   }`}
                 >
-                  <Link to={item.path}>
+                  <Link to={pathActive}>
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
                   </Link>

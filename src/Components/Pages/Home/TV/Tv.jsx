@@ -2,7 +2,7 @@ import List from "../../../List/List";
 import ListVertical from "../../../List/ListVertical";
 import Slide from "../../../Slide/Slide";
 import "./../Movies/movies.scss";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import tmdbApi, { category } from "../../../../Api/tmbdApi";
 import { Link, Location, useLocation } from "react-router-dom";
 import logo from "./../../../../Image/logo.png";
@@ -22,23 +22,21 @@ const Tv = (props) => {
   };
   const goToSearch = () => {
     getItem();
-    openForm(status);
+    handleClickInside();
   };
-  const openForm = (status) => {
-    status = true;
-    setStatus(status);
-  };
-  const closeForm = (status) => {
-    status = false;
-    setStatus(status);
-  };
-  document.onclick = (e) => {
-    var menuElement = document.getElementById("search");
-    var open = document.getElementById("icon-search");
-    if (menuElement.contains(e.target) == false && e.target != open) {
-      closeForm(status);
+  const myRef = useRef();
+  const handleClickOutside = (e) => {
+    if (!myRef.current.contains(e.target)) {
+      setStatus(false);
     }
   };
+  const handleClickInside = () => {
+    setStatus(true);
+  };
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  });
   return (
     <div className="movies">
       <div className="movies__container">
@@ -82,6 +80,7 @@ const Tv = (props) => {
             className={`movies__container__right__search ${
               status ? "active-search" : "noactive-search"
             }`}
+            ref={myRef}
           >
             <input
               type="text"
