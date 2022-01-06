@@ -58,9 +58,10 @@ const Navigation = (props) => {
   var arrayPath = currentPath.split("/");
   if (arrayPath.includes("home")) {
     var pathActive = "/home/movie";
-  } else {
-    var pathActive = currentPath;
   }
+  // else {
+  //   var pathActive = currentPath;
+  // }
   const onClose = () => {
     var status = false;
     props.reciveStatus(status);
@@ -90,7 +91,7 @@ const Navigation = (props) => {
                 key={index}
                 className={`${item.path === pathActive ? "active" : ""}`}
               >
-                <Link to={pathActive}>
+                <Link to="/home/movie">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -108,7 +109,7 @@ const Navigation = (props) => {
                   item.path === currentPath.pathname ? "active" : ""
                 }`}
               >
-                <Link to={pathActive}>
+                <Link to="/home/movie">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -126,7 +127,7 @@ const Navigation = (props) => {
                   item.path === currentPath.pathname ? "active" : ""
                 }`}
               >
-                <Link to={pathActive}>
+                <Link to="/home/movie">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -157,6 +158,7 @@ const Navigation = (props) => {
                   <Link to={item.path}>
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
+                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                   </Link>
                 </li>
               ))}
