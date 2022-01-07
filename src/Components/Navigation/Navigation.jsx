@@ -5,7 +5,7 @@ import { useState, useRef, useEffect } from "react";
 const Navigation = (props) => {
   var Menu = [
     {
-      display: "Home",
+      display: "Home11111111",
       path: "/",
       icon: "fas fa-home",
     },
