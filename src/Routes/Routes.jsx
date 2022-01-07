@@ -8,7 +8,7 @@ const RLink = (props) => {
   var status = props.status;
   var reciveStatus = props.reciveStatus;
   return (
-    <Routes basename="movie-web">
+    <Routes basename="/movie-web">
       <Route
         path="/"
         element={<Movies status={status} reciveStatus={reciveStatus}></Movies>}
