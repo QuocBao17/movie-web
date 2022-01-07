@@ -1,5 +1,6 @@
 @use  './Components/Scss/' as *;
 body{
+    overflow-x: hidden;
     a{
         text-decoration: none;
     }

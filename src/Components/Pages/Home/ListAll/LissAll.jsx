@@ -1,5 +1,6 @@
 import HeaderResponsive from "../../../Header/HeaderResponsive";
 import ListVertical from "../../../List/ListVertical";
+import ListVerticalTV from "../../../List/ListVerticalTv";
 import { useState, useEffect } from "react";
 import tmdbApi from "../../../../Api/tmbdApi";
 import { useParams } from "react-router-dom";
@@ -102,16 +103,34 @@ const LissAll = (props) => {
             <input type="text" placeholder="Search" />
           </div>
           <div className="movies__container__right__list">
-            <ListVertical
-              category={"movie"}
-              type={"popular"}
-              title={"Hot Movies"}
-            ></ListVertical>
-            <ListVertical
-              category={"movie"}
-              type={"upcoming"}
-              title={"Suggest Movies"}
-            ></ListVertical>
+            {cate === "movie" ? (
+              <div>
+                <ListVertical
+                  category={"movie"}
+                  type={"popular"}
+                  title={"Hot Movies"}
+                ></ListVertical>
+                <ListVertical
+                  category={"movie"}
+                  type={"upcoming"}
+                  title={"Suggest Movies"}
+                ></ListVertical>
+              </div>
+            ) : (
+              <div>
+                {" "}
+                <ListVerticalTV
+                  category={"tv"}
+                  type={"popular"}
+                  title={"Hot Tv Series"}
+                ></ListVerticalTV>
+                <ListVerticalTV
+                  category={"tv"}
+                  type={"top_rated"}
+                  title={"Suggest Tv Series"}
+                ></ListVerticalTV>
+              </div>
+            )}
           </div>
         </div>
       </div>

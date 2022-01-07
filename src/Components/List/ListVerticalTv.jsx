@@ -26,7 +26,7 @@ const ListVerticalTV = (props) => {
   return (
     <div className="list-vertical">
       <div className="list-vertical__container">
-        <h2>{props.name}</h2>
+        <h2>{props.title}</h2>
         {list.map((item, index) =>
           item.overview && item.backdrop_path ? (
             <Item

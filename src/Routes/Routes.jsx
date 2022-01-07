@@ -9,9 +9,8 @@ const RLink = (props) => {
   var reciveStatus = props.reciveStatus;
   return (
     <Routes>
-      <Route path="/" element={<Navigate replace to="/home/movie" />} />
       <Route
-        path="/home/movie"
+        path="/"
         element={<Movies status={status} reciveStatus={reciveStatus}></Movies>}
       ></Route>
       <Route

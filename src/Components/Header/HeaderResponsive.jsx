@@ -13,14 +13,18 @@ const HeaderResponsive = (props) => {
     },
     {
       display: "Movies",
-      path: "/home/movie",
+      path: "/",
     },
   ];
   const curerentPath = useLocation();
   var currentPath = useLocation().pathname; // lấy path hiện tại
-  var arrayPath = currentPath.split("/");
-  var shift = arrayPath.shift();
-  var pathActive = "/" + arrayPath[0] + "/" + arrayPath[1]; // nhận dc path[0];
+  var pathArray = currentPath.split("/");
+  var pathActive;
+  if (pathArray.includes("tv")) {
+    pathActive = "/home/tv";
+  } else {
+    pathActive = "/";
+  }
   const onOpen = () => {
     var status = true;
     props.props.reciveStatus(status);

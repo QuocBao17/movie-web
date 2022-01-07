@@ -6,7 +6,7 @@ const Navigation = (props) => {
   var Menu = [
     {
       display: "Home",
-      path: "/home/movie",
+      path: "/",
       icon: "fas fa-home",
     },
     {
@@ -55,13 +55,12 @@ const Navigation = (props) => {
     },
   ];
   var currentPath = useLocation().pathname; // lấy path hiện tại
-  var arrayPath = currentPath.split("/");
-  if (arrayPath.includes("home")) {
-    var pathActive = "/home/movie";
+  var pathActive;
+  if ((currentPath = "/home/tv")) {
+    pathActive = "/";
+  } else {
+    pathActive = currentPath;
   }
-  // else {
-  //   var pathActive = currentPath;
-  // }
   const onClose = () => {
     var status = false;
     props.reciveStatus(status);
@@ -91,7 +90,7 @@ const Navigation = (props) => {
                 key={index}
                 className={`${item.path === pathActive ? "active" : ""}`}
               >
-                <Link to="/home/movie">
+                <Link to="/">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -106,10 +105,10 @@ const Navigation = (props) => {
               <li
                 key={index}
                 className={`${
-                  item.path === currentPath.pathname ? "active" : ""
+                  item.path === currentPath.pathActive ? "active" : ""
                 }`}
               >
-                <Link to="/home/movie">
+                <Link to="/">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -124,10 +123,10 @@ const Navigation = (props) => {
               <li
                 key={index}
                 className={`${
-                  item.path === currentPath.pathname ? "active" : ""
+                  item.path === currentPath.pathActive ? "active" : ""
                 }`}
               >
-                <Link to="/home/movie">
+                <Link to="/">
                   <i className={item.icon}></i>
                   <p>{item.display}</p>
                 </Link>
@@ -155,10 +154,9 @@ const Navigation = (props) => {
                   key={index}
                   className={`${item.path === pathActive ? "active" : ""}`}
                 >
-                  <Link to="/home/movie">
+                  <Link to="/">
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
-                    <p>aaaaaaaaaaaaaaaaaaaaaaaaaaaa</p>
                   </Link>
                 </li>
               ))}
@@ -174,7 +172,7 @@ const Navigation = (props) => {
                     item.path === currentPath.pathname ? "active" : ""
                   }`}
                 >
-                  <Link to="/home/movie">
+                  <Link to="/">
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
                   </Link>
@@ -192,7 +190,7 @@ const Navigation = (props) => {
                     item.path === currentPath.pathname ? "active" : ""
                   }`}
                 >
-                  <Link to="/home/movie">
+                  <Link to="/">
                     <i className={item.icon}></i>
                     <p>{item.display}</p>
                   </Link>
